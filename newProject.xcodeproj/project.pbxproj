@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF74A78C21255ED4007847E1 /* DetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74A78B21255ED4007847E1 /* DetailsVC.m */; };
 		EFF3A5A22124096C0061769F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5A12124096C0061769F /* AppDelegate.m */; };
 		EFF3A5A52124096C0061769F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5A42124096C0061769F /* ViewController.m */; };
 		EFF3A5A82124096C0061769F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF3A5A62124096C0061769F /* Main.storyboard */; };
@@ -14,6 +15,12 @@
 		EFF3A5AD2124096F0061769F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF3A5AB2124096F0061769F /* LaunchScreen.storyboard */; };
 		EFF3A5B02124096F0061769F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5AF2124096F0061769F /* main.m */; };
 		EFF3A5BA2124096F0061769F /* newProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5B92124096F0061769F /* newProjectTests.m */; };
+		EFF3A5C921240B1B0061769F /* TeacherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5C821240B1B0061769F /* TeacherModel.m */; };
+		EFF3A5D121240BCB0061769F /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5D021240BCB0061769F /* HomeVC.m */; };
+		EFF3A5D4212412B40061769F /* SimpleTableViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5D3212412B40061769F /* SimpleTableViewControler.m */; };
+		EFF3A5D8212417A10061769F /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5D7212417A10061769F /* AccountCell.m */; };
+		EFF3A5DB212426C20061769F /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EFF3A5DA212426C20061769F /* 1.jpeg */; };
+		EFF3A5DD212426CF0061769F /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFF3A5DC212426CF0061769F /* 2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF74A78A21255ED4007847E1 /* DetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsVC.h; sourceTree = "<group>"; };
+		EF74A78B21255ED4007847E1 /* DetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsVC.m; sourceTree = "<group>"; };
 		EFF3A59D2124096C0061769F /* newProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF3A5A02124096C0061769F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EFF3A5A12124096C0061769F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +49,16 @@
 		EFF3A5B52124096F0061769F /* newProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF3A5B92124096F0061769F /* newProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = newProjectTests.m; sourceTree = "<group>"; };
 		EFF3A5BB2124096F0061769F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFF3A5C721240B1B0061769F /* TeacherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeacherModel.h; sourceTree = "<group>"; };
+		EFF3A5C821240B1B0061769F /* TeacherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeacherModel.m; sourceTree = "<group>"; };
+		EFF3A5CF21240BCB0061769F /* HomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
+		EFF3A5D021240BCB0061769F /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		EFF3A5D2212412B40061769F /* SimpleTableViewControler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewControler.h; sourceTree = "<group>"; };
+		EFF3A5D3212412B40061769F /* SimpleTableViewControler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewControler.m; sourceTree = "<group>"; };
+		EFF3A5D6212417A10061769F /* AccountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		EFF3A5D7212417A10061769F /* AccountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
+		EFF3A5DA212426C20061769F /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
+		EFF3A5DC212426CF0061769F /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +100,13 @@
 		EFF3A59F2124096C0061769F /* newProject */ = {
 			isa = PBXGroup;
 			children = (
-				EFF3A5A02124096C0061769F /* AppDelegate.h */,
-				EFF3A5A12124096C0061769F /* AppDelegate.m */,
-				EFF3A5A32124096C0061769F /* ViewController.h */,
-				EFF3A5A42124096C0061769F /* ViewController.m */,
-				EFF3A5A62124096C0061769F /* Main.storyboard */,
-				EFF3A5A92124096F0061769F /* Assets.xcassets */,
-				EFF3A5AB2124096F0061769F /* LaunchScreen.storyboard */,
-				EFF3A5AE2124096F0061769F /* Info.plist */,
+				EFF3A5D5212417560061769F /* View */,
+				EFF3A5CE21240B960061769F /* Storyboard */,
+				EFF3A5CD21240B650061769F /* Helper */,
+				EFF3A5CC21240B550061769F /* Resource */,
+				EFF3A5C621240AF60061769F /* Controller */,
+				EFF3A5C5212409B90061769F /* ViewController */,
+				EFF3A5C42124097B0061769F /* Model */,
 				EFF3A5AF2124096F0061769F /* main.m */,
 			);
 			path = newProject;
@@ -101,6 +119,99 @@
 				EFF3A5BB2124096F0061769F /* Info.plist */,
 			);
 			path = newProjectTests;
+			sourceTree = "<group>";
+		};
+		EFF3A5C42124097B0061769F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5C721240B1B0061769F /* TeacherModel.h */,
+				EFF3A5C821240B1B0061769F /* TeacherModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EFF3A5C5212409B90061769F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5CB21240B3C0061769F /* DetailVC */,
+				EFF3A5CA21240B2B0061769F /* HomeVC */,
+				EFF3A5A32124096C0061769F /* ViewController.h */,
+				EFF3A5A42124096C0061769F /* ViewController.m */,
+				EFF3A5D2212412B40061769F /* SimpleTableViewControler.h */,
+				EFF3A5D3212412B40061769F /* SimpleTableViewControler.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EFF3A5C621240AF60061769F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EFF3A5CA21240B2B0061769F /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5CF21240BCB0061769F /* HomeVC.h */,
+				EFF3A5D021240BCB0061769F /* HomeVC.m */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		EFF3A5CB21240B3C0061769F /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				EF74A78A21255ED4007847E1 /* DetailsVC.h */,
+				EF74A78B21255ED4007847E1 /* DetailsVC.m */,
+			);
+			path = DetailVC;
+			sourceTree = "<group>";
+		};
+		EFF3A5CC21240B550061769F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5D9212426370061769F /* image */,
+				EFF3A5A92124096F0061769F /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		EFF3A5CD21240B650061769F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5AE2124096F0061769F /* Info.plist */,
+				EFF3A5A02124096C0061769F /* AppDelegate.h */,
+				EFF3A5A12124096C0061769F /* AppDelegate.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		EFF3A5CE21240B960061769F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5A62124096C0061769F /* Main.storyboard */,
+				EFF3A5AB2124096F0061769F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		EFF3A5D5212417560061769F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5D6212417A10061769F /* AccountCell.h */,
+				EFF3A5D7212417A10061769F /* AccountCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EFF3A5D9212426370061769F /* image */ = {
+			isa = PBXGroup;
+			children = (
+				EFF3A5DC212426CF0061769F /* 2.jpg */,
+				EFF3A5DA212426C20061769F /* 1.jpeg */,
+			);
+			path = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +296,9 @@
 			files = (
 				EFF3A5AD2124096F0061769F /* LaunchScreen.storyboard in Resources */,
 				EFF3A5AA2124096F0061769F /* Assets.xcassets in Resources */,
+				EFF3A5DD212426CF0061769F /* 2.jpg in Resources */,
 				EFF3A5A82124096C0061769F /* Main.storyboard in Resources */,
+				EFF3A5DB212426C20061769F /* 1.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +318,11 @@
 			files = (
 				EFF3A5A52124096C0061769F /* ViewController.m in Sources */,
 				EFF3A5B02124096F0061769F /* main.m in Sources */,
+				EFF3A5C921240B1B0061769F /* TeacherModel.m in Sources */,
+				EFF3A5D121240BCB0061769F /* HomeVC.m in Sources */,
+				EFF3A5D4212412B40061769F /* SimpleTableViewControler.m in Sources */,
+				EF74A78C21255ED4007847E1 /* DetailsVC.m in Sources */,
+				EFF3A5D8212417A10061769F /* AccountCell.m in Sources */,
 				EFF3A5A22124096C0061769F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = newProject/Info.plist;
+				INFOPLIST_FILE = newProject/Helper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = newProject/Info.plist;
+				INFOPLIST_FILE = newProject/Helper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
