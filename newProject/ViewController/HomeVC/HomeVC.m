@@ -152,6 +152,7 @@
 }
 // call  back
 - (void)didClickEdit:(NSNotification *)notification {
+    [self.navigationController popToRootViewControllerAnimated:YES];
     NSMutableDictionary *re = notification.object;
     TeacherModel *cu = [re valueForKey:@"cu"];
     TeacherModel *moi = [re valueForKey:@"moi"];
