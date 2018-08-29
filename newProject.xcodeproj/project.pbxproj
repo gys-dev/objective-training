@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF58C7CD2133F09500E3DD3E /* EditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF58C7CC2133F09500E3DD3E /* EditVC.m */; };
 		EF74A78C21255ED4007847E1 /* DetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74A78B21255ED4007847E1 /* DetailsVC.m */; };
+		EFC69242212FF1B500D07813 /* AddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC69241212FF1B500D07813 /* AddVC.m */; };
 		EFF3A5A22124096C0061769F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5A12124096C0061769F /* AppDelegate.m */; };
 		EFF3A5A52124096C0061769F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF3A5A42124096C0061769F /* ViewController.m */; };
 		EFF3A5A82124096C0061769F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF3A5A62124096C0061769F /* Main.storyboard */; };
@@ -34,8 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF58C7CB2133F09500E3DD3E /* EditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditVC.h; sourceTree = "<group>"; };
+		EF58C7CC2133F09500E3DD3E /* EditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditVC.m; sourceTree = "<group>"; };
 		EF74A78A21255ED4007847E1 /* DetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsVC.h; sourceTree = "<group>"; };
 		EF74A78B21255ED4007847E1 /* DetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsVC.m; sourceTree = "<group>"; };
+		EFC69240212FF1B500D07813 /* AddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddVC.h; sourceTree = "<group>"; };
+		EFC69241212FF1B500D07813 /* AddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddVC.m; sourceTree = "<group>"; };
 		EFF3A59D2124096C0061769F /* newProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF3A5A02124096C0061769F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EFF3A5A12124096C0061769F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF58C7CA2133F06600E3DD3E /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				EF58C7CB2133F09500E3DD3E /* EditVC.h */,
+				EF58C7CC2133F09500E3DD3E /* EditVC.m */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		EFC6923F212FF15E00D07813 /* AddVC */ = {
+			isa = PBXGroup;
+			children = (
+				EFC69240212FF1B500D07813 /* AddVC.h */,
+				EFC69241212FF1B500D07813 /* AddVC.m */,
+			);
+			path = AddVC;
+			sourceTree = "<group>";
+		};
 		EFF3A5942124096C0061769F = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +157,8 @@
 		EFF3A5C5212409B90061769F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EF58C7CA2133F06600E3DD3E /* Edit */,
+				EFC6923F212FF15E00D07813 /* AddVC */,
 				EFF3A5CB21240B3C0061769F /* DetailVC */,
 				EFF3A5CA21240B2B0061769F /* HomeVC */,
 				EFF3A5A32124096C0061769F /* ViewController.h */,
@@ -319,10 +345,12 @@
 				EFF3A5A52124096C0061769F /* ViewController.m in Sources */,
 				EFF3A5B02124096F0061769F /* main.m in Sources */,
 				EFF3A5C921240B1B0061769F /* TeacherModel.m in Sources */,
+				EFC69242212FF1B500D07813 /* AddVC.m in Sources */,
 				EFF3A5D121240BCB0061769F /* HomeVC.m in Sources */,
 				EFF3A5D4212412B40061769F /* SimpleTableViewControler.m in Sources */,
 				EF74A78C21255ED4007847E1 /* DetailsVC.m in Sources */,
 				EFF3A5D8212417A10061769F /* AccountCell.m in Sources */,
+				EF58C7CD2133F09500E3DD3E /* EditVC.m in Sources */,
 				EFF3A5A22124096C0061769F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

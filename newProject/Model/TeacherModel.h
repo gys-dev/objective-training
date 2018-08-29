@@ -16,7 +16,7 @@
 
 
 + (NSArray *)dummyData;
-
++ (NSDictionary*)createDictionary:(NSArray*)arrayWithData;
 //1. database
 //2. backend
 //3. firebase

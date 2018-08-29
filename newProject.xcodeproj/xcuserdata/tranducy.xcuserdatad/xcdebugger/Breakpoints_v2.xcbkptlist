@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "newProject/ViewController/HomeVC/HomeVC.m"
-            timestampString = "556192867.695101"
+            filePath = "newProject/Model/TeacherModel.m"
+            timestampString = "557143744.392894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "+dummyData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,77 +25,45 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "newProject/ViewController/HomeVC/HomeVC.m"
-            timestampString = "556192867.695244"
+            filePath = "newProject/Model/TeacherModel.m"
+            timestampString = "557143744.393018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "+createDictionary:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "newProject/ViewController/DetailVC/DetailsVC.m"
-            timestampString = "556192867.6953551"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-showDetailWithTeacher:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "newProject/ViewController/DetailVC/DetailsVC.m"
-            timestampString = "556192867.696094"
+            filePath = "newProject/ViewController/AddVC/AddVC.m"
+            timestampString = "557142459.975135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-clickAdd:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "newProject/ViewController/DetailVC/DetailsVC.m"
-            timestampString = "556192867.69655"
+            filePath = "newProject/ViewController/HomeVC/HomeVC.m"
+            timestampString = "557218973.777594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "DetailsVC"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "newProject/ViewController/DetailVC/DetailsVC.m"
-            timestampString = "556192867.696964"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-showDetailWithTeacher:"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

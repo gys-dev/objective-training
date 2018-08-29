@@ -9,6 +9,7 @@
 #import "DetailsVC.h"
 #import "AccountCell.h"
 #import "TeacherModel.h"
+#import "EditVC.h"
 @interface DetailsVC ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -37,21 +38,18 @@
     self.phoneLabel.text = data.phoneContact;
     self.emailLabel.text = data.emailContact;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)deleteTeacherAction:(id)sender {
     if([self.delegate respondsToSelector:@selector(didClickDeleteTeacher:)]) {
         [self.delegate didClickDeleteTeacher:self.model];
-        [self.navigationController
-         popViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
+- (IBAction)didClickEditButton:(id)sender {
+    EditVC  *edit = [self.storyboard instantiateViewControllerWithIdentifier:@"EditVC"];
+    edit.model = [[TeacherModel alloc]init];
+    edit.model = self.model;
+    [self.navigationController pushViewController:edit animated:YES];
+}
 @end
