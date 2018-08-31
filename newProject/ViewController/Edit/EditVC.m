@@ -42,7 +42,8 @@
     [dic setObject:self.dataSend forKey:@"moi"];
     [dic setObject:self.model forKey:@"cu"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didClickEdit" object:dic];
-    [self.navigationController pushViewController:home animated:YES];
+//    [self.navigationController pushViewController:home animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 @end

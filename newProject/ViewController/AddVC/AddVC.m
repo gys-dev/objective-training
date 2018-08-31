@@ -31,7 +31,8 @@
     self.model.pathImage = self.imageTextField.text;
     if  ([self.delegate respondsToSelector:@selector(addNewData:)]){
         [self.delegate addNewData:self.model];
-        [self.navigationController popViewControllerAnimated:YES];
+      [self.navigationController popViewControllerAnimated:YES];
+ //       [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

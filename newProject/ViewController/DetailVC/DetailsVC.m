@@ -43,6 +43,7 @@
     if([self.delegate respondsToSelector:@selector(didClickDeleteTeacher:)]) {
         [self.delegate didClickDeleteTeacher:self.model];
         [self.navigationController popViewControllerAnimated:YES];
+      //[self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
