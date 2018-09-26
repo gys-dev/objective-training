@@ -1,4 +1,4 @@
-//
+
 //  TeacherModel.m
 //  newProject
 //
@@ -13,7 +13,20 @@
 @end
 
 @implementation TeacherModel
-
+#pragma mark - Init Model
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super init];
+    self.nameContact = [[dict objectForKey:@"firstName"] stringByAppendingString:@" "];
+    self.nameContact = [self.nameContact stringByAppendingString:[dict objectForKey:@"lastName"]];
+    self.phoneContact = [[dict objectForKey:@"phone"] valueForKey:@"mobile"];
+    self.emailContact = [dict objectForKey:@"email"];
+    self.pathImage = [dict objectForKey:@"twitter"];
+    self.idContact = [dict objectForKey:@"_id"];
+    self.pathImage = [dict objectForKey:@"twitter"];
+    return self;
+}
+//http://m.mfun.vn/uploads/huong/13445460_1037889249624616_2350317967011431053_n.jpg
+#pragma mark - Data Source
 + (NSArray *)dummyData {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     // data0
@@ -72,9 +85,59 @@
     [arr addObject:contact6];
     return arr;
 }
++ (NSMutableArray *)fetchAPI{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    NSError *error;
+    NSString *url_string = [NSString stringWithFormat: @"https://loicontacts.herokuapp.com/contacts"];
+    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url_string]];
+    NSMutableArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    for (NSDictionary *item in json){
+        TeacherModel *fetchData = [[TeacherModel alloc] init];
+        fetchData.nameContact = [[item objectForKey:@"firstName"] stringByAppendingString:@" "];
+        fetchData.nameContact = [fetchData.nameContact stringByAppendingString:[item objectForKey:@"lastName"]];
+        fetchData.phoneContact = [[item objectForKey:@"phone"] objectForKey:@"mobile"];
+        fetchData.emailContact = [item objectForKey:@"email"];
+        fetchData.pathImage = [item objectForKey:@"twitter"];
+        fetchData.idContact = [item objectForKey:@"_id"];
+        [result addObject:fetchData];
+    };
+    return result;
+}
 
+//
++(void)fetchAllContactsWithCompletionHandler:(void(^_Nullable)(NSArray * _Nullable data,NSError *_Nullable error))completionHandle{
+//    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:@""]
+    NSURLSession *session=[NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask=[session dataTaskWithURL:[NSURL URLWithString:@"https://loicontacts.herokuapp.com/contacts"]completionHandler:^(NSData* _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                {
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        if (error!=nil) {
+                            completionHandle(nil,error);
+                            return;
+                        }
+                        NSError *errorParse=nil;
+                        NSArray *jsonResults=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorParse];
+                        if (errorParse) {
+                            //                           NSLog(@"Can’t parse json");
+                        }
+                        else{
+                            
+                            NSMutableArray *placeModels = [[NSMutableArray alloc]init];
+                            for (NSDictionary *item in jsonResults){
+                                TeacherModel * fetchData= [[TeacherModel alloc] initWithDictionary:item];
+                                fetchData.pathImage = @"http://m.mfun.vn/uploads/huong/13445460_1037889249624616_2350317967011431053_n.jpg";
+                                [placeModels addObject:fetchData];
+                            };
+                            completionHandle(placeModels,nil);
+                            
+                        }
+                    });
+                }];
+    [dataTask resume];
 
-+ (NSDictionary*)createDictionary:(NSArray*)arrayWithData{
+};
+#pragma mark - Helper
++ (NSMutableDictionary*)createDictionary:(NSMutableArray*)arrayWithData{
     // Sap xep tu mang arrayWithData theo nameContact
     NSArray *sortedDictionary = [[NSArray alloc] init];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"nameContact" ascending:YES selector:@selector(caseInsensitiveCompare:)];
@@ -107,5 +170,25 @@
     
     return formatDictionary;
     
+}
+
++ (NSString *)jsonGenerator:(TeacherModel *)model{
+    NSString *firstName = [[model.nameContact componentsSeparatedByString:@" "] objectAtIndex:0];
+//    NSString *lastName = [[model.nameContact componentsSeparatedByString:@" "] objectAtIndex:1];
+    NSRange range = [model.nameContact rangeOfString:firstName];
+    NSString *lastName = [model.nameContact substringFromIndex:(range.location + range.length + 1)];
+    NSMutableDictionary *phoneDict = [[NSMutableDictionary alloc] init];
+    [phoneDict setValue:model.phoneContact forKey:@"mobile"];
+    [phoneDict setValue:@"" forKey:@"work"];
+    NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] init];
+    [newDictionary setObject:firstName forKey:@"firstName"];
+    [newDictionary setObject:lastName forKey:@"lastName"];
+    [newDictionary setObject:model.emailContact forKey:@"email"];
+    [newDictionary setObject:phoneDict forKey:@"phone"];
+    NSError *error;
+    NSData *dataJsonString = [NSJSONSerialization dataWithJSONObject:newDictionary options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *result = [[NSString alloc] initWithData:dataJsonString encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",result);
+    return result;
 }
 @end

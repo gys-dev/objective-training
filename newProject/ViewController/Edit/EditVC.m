@@ -20,7 +20,7 @@
 @end
 
 @implementation EditVC
-
+#pragma mark - lifecyle
 - (void)viewDidLoad {
     [super viewDidLoad];
     TeacherModel *data = [[TeacherModel alloc]init];
@@ -31,13 +31,14 @@
     self.emailTextField.text = data.emailContact;
     self.imageTextField.text = data.pathImage;
 }
-
+#pragma mark - gesture
 - (IBAction)didClickEdit:(id)sender {
     HomeVC *home  =[self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
     self.dataSend.nameContact = self.nameTextField.text;
     self.dataSend.phoneContact = self.phoneTextField.text;
     self.dataSend.emailContact = self.emailTextField.text;
     self.dataSend.pathImage = self.imageTextField.text;
+    self.dataSend.idContact = self.model.idContact;
     NSMutableDictionary *dic  = [[NSMutableDictionary alloc] init];
     [dic setObject:self.dataSend forKey:@"moi"];
     [dic setObject:self.model forKey:@"cu"];

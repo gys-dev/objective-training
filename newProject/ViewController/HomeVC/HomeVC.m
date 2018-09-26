@@ -12,52 +12,47 @@
 #import <UIKit/UIKit.h>
 #import "AddVC.h"
 #import "EditVC.h"
+#import "SVProgressHUD.h"
 @interface HomeVC () <UITableViewDelegate, UITableViewDataSource, DetailVCDelegate,AddVCDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSArray *contactArray;
+@property (nonatomic,strong) NSMutableArray *contactArray;
 @property (nonatomic,strong) NSMutableDictionary *contactDictionary;
 @property (nonatomic,strong) NSArray *titleSectionArray;
 @property (nonatomic,strong) NSIndexPath *myIndexPath;
-@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-- (IBAction)didEdit:(id)sender;
 - (IBAction)didClickAdd:(id)sender;
 @property(nonatomic,assign) BOOL isSearch;
 @property (nonatomic,assign)  NSInteger searchTextStatusLenght;
+@property (nonatomic,assign) NSInteger runOneTimes;
 @end
 @implementation HomeVC
-
 #pragma mark - Lifecyle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.isSearch = false;
-     // data
-    self.contactArray = [TeacherModel dummyData];
-    self.contactDictionary = [TeacherModel createDictionary:self.contactArray].mutableCopy;
-    self.titleSectionArray = [[self.contactDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    // data
+    self.contactArray = [[NSMutableArray alloc] init];
+    self.contactDictionary = [[NSMutableDictionary alloc] init];
+//    self.contactArray =  [TeacherModel fetchAPI];
+    [self fetchAllContacts];
+//    [self setupDataWithArray:self.contactArray];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
-    
-    
-    //call notification
     [self registerObservers];
-//    EditVC *edit = [self.storyboard instantiateViewControllerWithIdentifier:@"EditVC"];
-//    edit.delegate = self;
+   
 }
 
 - (void)dealloc
 {
     [self removeObservers];
 }
+
+#pragma mark - Tableview DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.contactDictionary count];
 }
-
-
-#pragma mark - Tableview DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSString *sectionTitle = [self.titleSectionArray objectAtIndex:section];
@@ -118,35 +113,16 @@
     self.myIndexPath = indexPath;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+#pragma mark - gesture
 // Xoa
 - (void)didClickDeleteTeacher:(TeacherModel *)model {
-    NSString *key = [self.titleSectionArray objectAtIndex:self.myIndexPath.section];
-    NSMutableArray *contact = [self.contactDictionary objectForKey:key];
-    if ([contact count] > 1){
-        [contact removeObjectAtIndex:self.myIndexPath.row];
-        [self.contactDictionary setObject:contact forKey:key];
-    }else{
-        [self.contactDictionary removeObjectForKey:key];
-    }
-    [self.tableView reloadData];
-}
-
-- (IBAction)didEdit:(id)sender {
-//    NSLog(@"%@",self.searchTextField.text);
-    if (self.searchTextField.text != nil){
-        NSString* key = [[self.searchTextField.text substringToIndex:1]uppercaseString];
-        NSMutableArray *listSearch = [self.contactDictionary valueForKey:key];
-        NSMutableArray *result = [[NSMutableArray alloc] init];
-        for (int i = 0; i < [listSearch count]; i++){
-            TeacherModel *name = [listSearch objectAtIndex:i];
-            if ( [name.nameContact containsString:self.searchTextField.text]){
-                [result addObject:name];
-            }
+    [self deleteRequest:model.idContact completionHandle:^(NSData * _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error %@", error.localizedDescription);
+        } else {
+            [self fetchAllContacts];
         }
-        self.contactDictionary = [TeacherModel createDictionary:result].mutableCopy;
-        [self.tableView reloadData];
-    };
-
+    }];
 }
 
 - (IBAction)didClickAdd:(id)sender {
@@ -156,7 +132,7 @@
     
     
 }
-#pragma mark - Search
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (searchText.length != 0){
         if (searchText.length > self.searchTextStatusLenght){
@@ -195,49 +171,90 @@
     self.titleSectionArray = [[self.contactDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     [self.tableView reloadData];
 }
+// call  back
+- (void)didClickEdit:(NSNotification *)notification {
+    // [self.navigationController popToRootViewControllerAnimated:YES];
+    NSMutableDictionary *re = notification.object;
+    TeacherModel *moi = [re valueForKey:@"moi"];
+    NSString *sendPostData = [TeacherModel jsonGenerator:moi];
+    NSString *endPoint  = @"https://loicontacts.herokuapp.com/contacts/";
+    endPoint = [endPoint stringByAppendingString:moi.idContact];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:endPoint]];
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody: [sendPostData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLSession *session  = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [self fetchAllContacts];
+    }];
+    [dataTask resume];
+}
 #pragma mark - Helper
-//Them moi data
-- (void)addNewData:(TeacherModel *)model {
-    NSString *key = [[model.nameContact substringToIndex:1]uppercaseString];
-//     NSMutableArray *temp = [[NSMutableArray alloc] init];
-    if (![self.contactDictionary objectForKey:key]) {
-        NSMutableArray *newArray = [[NSMutableArray alloc]initWithObjects:model, nil ];
-        [self.contactDictionary setObject:newArray forKey:key];
-    } else {
-        NSMutableArray *temp = [self.contactDictionary objectForKey:key];
-        [temp addObject:model];
-        [self.contactDictionary setObject:temp forKey:key];
-    }
 
+- (void)setupDataWithArray:(NSArray *)array {
+    self.contactDictionary = [TeacherModel createDictionary:array].mutableCopy;
     self.titleSectionArray = [[self.contactDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    [self.tableView reloadData];
+}
+
+- (void)fetchAllContacts {
+    [SVProgressHUD show];
+    [TeacherModel fetchAllContactsWithCompletionHandler:^(NSArray * _Nullable data, NSError * _Nullable error) {
+        self.contactArray = data.mutableCopy;
+        [self setupDataWithArray:self.contactArray];
+        [self reloadTableView];
+        [SVProgressHUD dismiss];
+    }];
+}
+
+- (void)reloadTableView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+}
+
+- (void)addNewData:(TeacherModel *)model {
+    NSString *sendPostData = [TeacherModel jsonGenerator:model];
+    NSString *endPoint  = @"https://loicontacts.herokuapp.com/contacts/";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:endPoint]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody: [sendPostData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLSession *session  = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil)
+            [self fetchAllContacts];
+    }];
+    [dataTask resume];
+    
 }
 // notification
 - (void)registerObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didClickEdit:) name:@"didClickEdit" object:nil];
 }
-// call  back
-- (void)didClickEdit:(NSNotification *)notification {
-   // [self.navigationController popToRootViewControllerAnimated:YES];
-    NSMutableDictionary *re = notification.object;
-    TeacherModel *cu = [re valueForKey:@"cu"];
-    TeacherModel *moi = [re valueForKey:@"moi"];
-    
-    NSString *key = [[cu.nameContact substringToIndex:1] uppercaseString];
-    NSMutableArray *arr = [self.contactDictionary valueForKey:key];
-    if (arr == nil){
-        [self.contactDictionary setObject:arr forKey:key];
-    }else{
-        int pos;
-        for (pos = 0; pos < [arr count]; pos++){
-            if (cu == [arr objectAtIndex:pos])
-                break;
-        };
-        [arr setObject:moi atIndexedSubscript:pos];
-        [self.contactDictionary setObject:arr forKey:key];
-    }
-    [self.tableView reloadData];
+
+- (void)deleteRequest:(NSString *)idContact completionHandle:(void(^_Nullable)(NSData * _Nullable data, NSError *_Nullable error))completionHandle{
+    NSString *endPoint  = @"https://loicontacts.herokuapp.com/contacts/";
+    endPoint = [endPoint stringByAppendingString:idContact];
+    NSMutableURLRequest *request  = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:endPoint]];
+    [request setHTTPMethod:@"DELETE"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error == nil){
+                completionHandle(nil, error);
+                return;
+            }else{
+                [self fetchAllContacts];
+                completionHandle(data, nil);
+                return;
+            };
+        });
+    }];
+    [dataTask resume];
 }
+
 // remove noti
 - (void)removeObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self];

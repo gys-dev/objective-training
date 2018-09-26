@@ -23,7 +23,7 @@
 
 @end
 @implementation DetailsVC
-
+#pragma mark - Lifecyle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nameLabel.text = self.model.nameContact;
@@ -32,18 +32,21 @@
     self.contactImage.image = [UIImage imageNamed:self.model.pathImage];
     // Do any additional setup after loading the view.
 }
-
+#pragma mark - Show data
 - (void)showDetailWithTeacher:(TeacherModel *)data{
     self.nameLabel.text = data.nameContact;
     self.phoneLabel.text = data.phoneContact;
     self.emailLabel.text = data.emailContact;
 }
 
+#pragma mark - gesture
 - (IBAction)deleteTeacherAction:(id)sender {
     if([self.delegate respondsToSelector:@selector(didClickDeleteTeacher:)]) {
         [self.delegate didClickDeleteTeacher:self.model];
+        NSLog(@"7");
         [self.navigationController popViewControllerAnimated:YES];
       //[self.navigationController popToRootViewControllerAnimated:YES];
+        NSLog(@"POPED!");
     }
 }
 

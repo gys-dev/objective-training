@@ -13,16 +13,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *accountImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameAccountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
-
 @end
 
 @implementation AccountCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
 }
 
-- (void)setupDataForCellWith:(UIImage *)accountImage name:(NSString *)name phoneNumber:(NSString *)phoneNumber {
+- (void)setupDataForCellWith:(UIImage * _Nullable)accountImage name:(NSString *)name phoneNumber:(NSString *)phoneNumber {
     self.nameAccountLabel.text = name;
     self.phoneNumberLabel.text = phoneNumber;
     self.accountImageView.image = accountImage;
