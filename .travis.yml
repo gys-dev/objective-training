@@ -1,4 +1,4 @@
 language: objective-c
 script:
   - pod install
-  - xcodebuild -workspace newProject.xcworkspace -scheme TravisExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -workspace newProject.xcworkspace -scheme newProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
